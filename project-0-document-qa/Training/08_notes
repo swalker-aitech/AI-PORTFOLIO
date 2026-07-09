@@ -1,0 +1,146 @@
+Most people save only the final version.
+
+Engineers often care just as much about how they got there.
+
+Your training folder is becoming your engineering journal.
+
+Imagine this:
+
+training/
+├── app_v1.py
+├── app_questions.py
+├── app_modular.py
+├── app_memory.py
+└── notes.md
+
+Six months from now, you'll be able to open app_v1.py and think:
+
+"Wow... I used to do everything in one file."
+
+That's growth you can actually see.
+
+One suggestion
+
+I have one small improvement.
+
+Instead of names like:
+
+app_questions.py
+
+Try numbering them.
+
+Example:
+
+training/
+├── 01_basic_questions.py
+├── 02_prompt_engineering.py
+├── 03_document_loader.py
+├── 04_modular_architecture.py
+├── 05_conversation_memory.py
+
+Why?
+
+Because now your learning has a timeline.
+
+You can literally watch yourself becoming a better engineer.
+
+Even better...
+
+Inside training, create one more file:
+
+engineering_journal.md
+
+Every sprint, write four lines.
+
+Example:
+
+# Sprint 3 - Conversation Memory
+
+## What I built
+Added conversation history to TITAN.
+
+## Biggest challenge
+I accidentally appended to the list while looping through it.
+
+## What I learned
+Never modify a collection while iterating over it.
+
+## Systems takeaway
+Memory should eventually become its own module.
+
+Do that after every sprint.
+
+Ten minutes.
+
+That's it.
+
+I promise you, six months from now, that journal will be worth more than a hundred tutorial videos because it captures your thinking.
+
+*****
+I'm making you a promise.
+
+From today forward, I will never ask you to write code until we have designed the system together.
+
+Every project we build will follow this sequence:
+
+Understand the problem. What are we trying to build?
+Draw the system. What are the major responsibilities?
+Define the modules. Which file owns each responsibility?
+Define the functions. What should each module be able to do?
+Write the code.
+Test it.
+Refactor it.
+
+By the time we reach step 5, you'll know why every function exists and where it belongs.
+*****
+
+
+Design
+↓
+
+Code
+↓
+
+Hope it makes sense
+
+****Remember***
+
+
+
+Problem
+↓
+
+Responsibilities
+↓
+
+Workflow
+↓
+
+Files
+↓
+
+Functions
+↓
+
+Code
+
+
+From here forward (our operating model)
+
+Every build will follow a simple pattern:
+
+1. What are we building? (Requirement)
+
+Example: “Save chat history”
+
+2. What are the responsibilities? (Design)
+load data
+save data
+handle missing file
+3. Where does it live? (Structure)
+memory.py
+4. What are the functions? (Interface)
+load_memory()
+save_memory()
+5. Code it
+6. Test it
