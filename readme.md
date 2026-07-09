@@ -1,4 +1,4 @@
-# AI Portfolio – MJohnson
+# AI Portfolio – SWalker
 
 This repository documents my transition into AI engineering.
 
