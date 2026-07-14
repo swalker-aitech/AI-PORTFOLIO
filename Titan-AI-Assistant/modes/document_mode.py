@@ -2,6 +2,8 @@ from document_loader import load_document
 from titan import ask_titan
 from memory import load_memory, save_memory
 from document_manager import list_documents
+from chunker import create_chunks
+from commands import process_command
 
 
 def run_document_mode():
@@ -21,6 +23,14 @@ def run_document_mode():
 
     document = load_document(selected)
 
+    print("\n--- DOCUMENT PREVIEW ---")
+    print(document[:500])
+    print("--- END PREVIEW ---\n")
+
+    chunks = create_chunks(document)
+
+    print(f"\nDocument split into {len(chunks)} chunks.\n")
+
     print("\nAI Document Assistant (type 'exit' to quit)\n")
 
     while True:
@@ -30,6 +40,12 @@ def run_document_mode():
         if question.lower() == "exit":
             print("Goodbye 👋")
             break
+
+        handled, response = process_command(question)
+
+        if handled:
+            print(f"\n{response}\n")
+            continue
 
         answer = ask_titan(
             document,
@@ -56,5 +72,3 @@ def run_document_mode():
         )
 
         save_memory(history)
-
-        print("\n" + "-" * 40 + "\n")
