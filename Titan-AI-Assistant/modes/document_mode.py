@@ -1,14 +1,10 @@
 from document_loader import load_document
-from titan import ask_titan
-from memory import load_memory, save_memory
 from document_manager import list_documents
 from chunker import create_chunks
-from commands import process_command
+from core.conversation import start_conversation
 
 
 def run_document_mode():
-
-    history = load_memory()
 
     documents = list_documents()
 
@@ -31,44 +27,7 @@ def run_document_mode():
 
     print(f"\nDocument split into {len(chunks)} chunks.\n")
 
-    print("\nAI Document Assistant (type 'exit' to quit)\n")
-
-    while True:
-
-        question = input("Ask a question: ")
-
-        if question.lower() == "exit":
-            print("Goodbye 👋")
-            break
-
-        handled, response = process_command(question)
-
-        if handled:
-            print(f"\n{response}\n")
-            continue
-
-        answer = ask_titan(
-            document,
-            question,
-            history,
-            mode="document"
-        )
-
-        print("\nAnswer:")
-        print(answer)
-
-        history.append(
-            {
-                "role": "user",
-                "content": question
-            }
-        )
-
-        history.append(
-            {
-                "role": "assistant",
-                "content": answer
-            }
-        )
-
-        save_memory(history)
+    start_conversation(
+        document=document,
+        mode="document"
+    )
