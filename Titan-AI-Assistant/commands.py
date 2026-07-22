@@ -29,6 +29,8 @@ def process_command(question):
     q = q.translate(str.maketrans("", "", string.punctuation))
 
     command_map = {
+        "help": help_command,
+        "commands": help_command,
 
         "last question": last_question,
         "what was my last question": last_question,
@@ -92,4 +94,30 @@ def question_count():
         if item["role"] == "user"
     )
 
-    return f"You have asked {count} questions."        
+    return f"You have asked {count} questions." 
+
+def help_command():
+
+    return """
+==============================
+      TITAN COMMANDS
+==============================
+
+help
+    Show available commands
+
+last question
+    Display your previous question
+
+show history
+    Display conversation history
+
+question count
+    Count user questions
+
+clear memory
+    Clear conversation history
+
+exit
+    Exit Document Mode
+"""       

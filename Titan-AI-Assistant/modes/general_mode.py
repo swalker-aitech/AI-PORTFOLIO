@@ -1,5 +1,8 @@
+from urllib import response
+
 from titan import ask_titan
 from memory import load_memory, save_memory
+from commands import process_command
 
 
 def run_general_mode():
@@ -15,6 +18,12 @@ def run_general_mode():
         if question.lower() == "exit":
             print("Goodbye 👋")
             break
+
+        handled, response = process_command(question)
+
+        if handled:
+            print(f"\n{response}\n")
+            continue
 
         answer = ask_titan(
             "",
