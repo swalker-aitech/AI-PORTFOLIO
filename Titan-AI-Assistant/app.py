@@ -1,5 +1,10 @@
 VERSION = "1.0"
 
+from core.logger import log_info
+from modes.document_mode import run_document_mode
+from modes.general_mode import run_general_mode
+
+
 def titan_banner():
 
     print(f"""
@@ -17,10 +22,10 @@ Commands: Available
 ========================================
 """)
 
+
 titan_banner()
 
-from modes.document_mode import run_document_mode
-from modes.general_mode import run_general_mode
+log_info("Titan started")
 
 
 mode = input(
