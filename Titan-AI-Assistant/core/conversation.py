@@ -25,20 +25,29 @@ def start_conversation(
 
     while True:
 
-        question = input("Ask a question: ")
+        question = input("\nAsk a question (type 'help' for commands): ").strip()
 
+        if question.lower() == "help":
+            print("""
+Available Commands
+------------------
+help      - Show this menu
+version   - Show Titan version
+history   - Show conversation history
+clear     - Show conversation history
+exit      - Quit Titan
+""")
+            continue
 
         if question.lower() == "exit":
             print("Goodbye 👋")
             break
-
 
         handled, response = process_command(question)
 
         if handled:
             print(f"\n{response}\n")
             continue
-
 
         answer = ask_titan(
             document,
@@ -47,10 +56,8 @@ def start_conversation(
             mode=mode
         )
 
-
         print("\nAnswer:")
         print(answer)
-
 
         history.append(
             {
@@ -59,7 +66,6 @@ def start_conversation(
             }
         )
 
-
         history.append(
             {
                 "role": "assistant",
@@ -67,8 +73,6 @@ def start_conversation(
             }
         )
 
-
         save_memory(history)
-
 
         print("\n" + "-" * 40 + "\n")

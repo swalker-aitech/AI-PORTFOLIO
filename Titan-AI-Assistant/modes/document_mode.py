@@ -13,9 +13,24 @@ def run_document_mode():
     for i, filename in enumerate(documents, start=1):
         print(f"{i}. {filename}")
 
-    choice = int(input("\nSelect a document: "))
 
-    selected = documents[choice - 1]
+    while True:
+
+        try:
+
+            choice = int(input("\nSelect a document: "))
+
+            if choice < 1 or choice > len(documents):
+                print("Invalid document selection.")
+                continue
+
+            selected = documents[choice - 1]
+            break
+
+        except ValueError:
+
+            print("Please enter a document number.")
+
 
     document = load_document(selected)
 
@@ -23,9 +38,11 @@ def run_document_mode():
     print(document[:500])
     print("--- END PREVIEW ---\n")
 
+
     chunks = create_chunks(document)
 
     print(f"\nDocument split into {len(chunks)} chunks.\n")
+
 
     start_conversation(
         document=document,
