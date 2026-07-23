@@ -109,15 +109,15 @@ help
 last question
     Display your previous question
 
-show history
+history / show history
     Display conversation history
 
 question count
     Count user questions
 
-clear memory
+clear memory / clear history
     Clear conversation history
 
 exit
-    Exit Document Mode
-"""       
+    Exit Titan
+"""

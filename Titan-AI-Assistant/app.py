@@ -1,5 +1,24 @@
 VERSION = "1.0"
 
+def titan_banner():
+
+    print(f"""
+========================================
+          TITAN AI ASSISTANT
+              Version {VERSION}
+========================================
+
+Local AI Document Intelligence System
+
+Model: Mistral
+Memory: Enabled
+Commands: Available
+
+========================================
+""")
+
+titan_banner()
+
 from modes.document_mode import run_document_mode
 from modes.general_mode import run_general_mode
 

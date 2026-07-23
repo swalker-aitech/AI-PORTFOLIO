@@ -24,12 +24,19 @@ def start_conversation(
 
 
     while True:
-        question = input(
-            "\nAsk a question (type 'help' for commands): "
-        ).strip()
 
-        if not question:
-            print("Please enter a question.")
+        question = input("\nAsk a question (type 'help' for commands): ").strip()
+
+        if question.lower() == "help":
+            print("""
+Available Commands
+------------------
+help      - Show this menu
+version   - Show Titan version
+history   - Show conversation history
+clear     - Show conversation history
+exit      - Quit Titan
+""")
             continue
 
         if question.lower() == "exit":
